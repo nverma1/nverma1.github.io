@@ -14,12 +14,14 @@ organizations:
     url: https://www.clsp.jhu.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am a PhD student at Johns Hopkins working on machine translation and multilingual representations.
+bio: I am a PhD student at Johns Hopkins Center for Language and Speech Processing.
 
 # Interests to show in About widget
 interests:
   - Machine Translation
   - Multilingual Representation Learning
+  - Model Compression
+  - Efficient NLP
 
 # Education to show in About widget
 education:
@@ -65,8 +67,8 @@ email: ''
 highlight_name: true
 ---
 
-I am a second-year Computer Science Ph.D. Student at the [Center for Language and Speech Processing](https://www.clsp.jhu.edu/) at Johns Hopkins University, supervised by [Kevin Duh](https://www.cs.jhu.edu/~kevinduh/) and [Kenton Murray](https://kentonmurray.com/).   
+I am a third-year Computer Science Ph.D. Student at the [Center for Language and Speech Processing](https://www.clsp.jhu.edu/) at Johns Hopkins University, supervised by [Kevin Duh](https://www.cs.jhu.edu/~kevinduh/) and [Kenton Murray](https://kentonmurray.com/).   
 
-Previously, I was at Yale University studying math and computer science, and working with [Dragomir Radev](http://www.cs.yale.edu/homes/radev/) at the [Yale LILY Lab](https://yale-lily.github.io/).
+Previously, I was at Yale University studying math and computer science, and working with [Dragomir Radev](http://www.cs.yale.edu/homes/radev/) at the [Yale LILY Lab](https://yale-lily.github.io/). During Summer 2023, I interned with [Maha Elbayad](https://elbayadm.github.io/) at Meta AI Research in Menlo Park, CA. 
 
 <!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}. -->
