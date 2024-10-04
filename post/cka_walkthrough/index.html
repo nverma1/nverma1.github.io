@@ -64,10 +64,10 @@
   
     
   
-  <meta name="description" content="" />
+  <meta name="description" content="Explaining Centered Kernel Alignment (CKA) in more detail, and working out some of the derivations from the original Kornblith et al. paper." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://nverma1.github.io/publication/rep_comb2023/" />
+  <link rel="alternate" hreflang="en-us" href="https://nverma1.github.io/post/cka_walkthrough/" />
 
   
   
@@ -285,7 +285,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu663f8d75bcb2ce56f4f1e6f6a8251c5c_4446_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu663f8d75bcb2ce56f4f1e6f6a8251c5c_4446_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://nverma1.github.io/publication/rep_comb2023/" />
+  <link rel="canonical" href="https://nverma1.github.io/post/cka_walkthrough/" />
 
   
   
@@ -296,7 +296,6 @@
   
   
     
-    
   
   
 
@@ -305,24 +304,24 @@
     
     
   
-  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:card" content="summary_large_image" />
   
     <meta property="twitter:site" content="@wowchemy" />
     <meta property="twitter:creator" content="@wowchemy" />
   
   <meta property="og:site_name" content="Neha Verma" />
-  <meta property="og:url" content="https://nverma1.github.io/publication/rep_comb2023/" />
-  <meta property="og:title" content="Exploring Representational Disparities Between Multilingual and Bilingual Translation Models | Neha Verma" />
-  <meta property="og:description" content="" /><meta property="og:image" content="https://nverma1.github.io/media/icon_hu663f8d75bcb2ce56f4f1e6f6a8251c5c_4446_512x512_fill_lanczos_center_3.png" />
-    <meta property="twitter:image" content="https://nverma1.github.io/media/icon_hu663f8d75bcb2ce56f4f1e6f6a8251c5c_4446_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:url" content="https://nverma1.github.io/post/cka_walkthrough/" />
+  <meta property="og:title" content="Understanding CKA | Neha Verma" />
+  <meta property="og:description" content="Explaining Centered Kernel Alignment (CKA) in more detail, and working out some of the derivations from the original Kornblith et al. paper." /><meta property="og:image" content="https://nverma1.github.io/post/cka_walkthrough/featured.png" />
+    <meta property="twitter:image" content="https://nverma1.github.io/post/cka_walkthrough/featured.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2024-05-23T00:00:00&#43;00:00"
+        content="2024-08-30T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-05-23T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2024-08-30T00:00:00&#43;00:00">
   
 
   
@@ -334,6 +333,8 @@
 
 
 
+
+  
 
 
 
@@ -341,15 +342,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://nverma1.github.io/publication/rep_comb2023/"
+    "@id": "https://nverma1.github.io/post/cka_walkthrough/"
   },
-  "headline": "Exploring Representational Disparities Between Multilingual and Bilingual Translation Models",
+  "headline": "Understanding CKA",
   
-  "datePublished": "2024-05-23T00:00:00Z",
-  "dateModified": "2024-05-23T00:00:00Z",
+  "image": [
+    "https://nverma1.github.io/post/cka_walkthrough/featured.png"
+  ],
+  
+  "datePublished": "2024-08-30T00:00:00Z",
+  "dateModified": "2024-08-30T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -364,7 +369,7 @@
       "url": "https://nverma1.github.io/media/icon_hu663f8d75bcb2ce56f4f1e6f6a8251c5c_4446_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "\r"
+  "description": "Explaining Centered Kernel Alignment (CKA) in more detail, and working out some of the derivations from the original Kornblith et al. paper."
 }
 </script>
 
@@ -380,11 +385,11 @@
 
 
 
-  <title>Exploring Representational Disparities Between Multilingual and Bilingual Translation Models | Neha Verma</title>
+  <title>Understanding CKA | Neha Verma</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="598b65b430060416853fd5d159ce13c1" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d34b8d0aa0e75bd0d5735141937502c4" >
 
   
   
@@ -720,16 +725,7 @@
     
     
 
-    
-
-
-
-
-
-
-
-
-<div class="pub">
+    <article class="article">
 
   
 
@@ -744,18 +740,25 @@
 
 
 
-  
+
+
+
+
+
+
+
+
 
   
   
-  
+
+
 <div class="article-container pt-3">
-  <h1>Exploring Representational Disparities Between Multilingual and Bilingual Translation Models</h1>
+  <h1>Understanding CKA</h1>
 
   
 
   
-    
 
 
 <div class="article-metadata">
@@ -768,9 +771,7 @@
     
 
   <span class="author-highlighted">
-      Neha Verma</span>, <span >
-      Kenton Murray</span>, <span >
-      Kevin Duh</span>
+      Neha Verma</span>
   </div>
   
   
@@ -781,7 +782,7 @@
     
       
     
-    May, 2024
+    Aug 30, 2024
   </span>
   
 
@@ -799,43 +800,7 @@
 
 </div>
 
-    
-
-
-
-
-<div class="btn-links mb-3">
   
-  
-
-
-
-
-
-
-
-
-  
-    
-  
-
-
-
-<a class="btn btn-outline-primary btn-page-header" href="https://arxiv.org/pdf/2305.14230.pdf" target="_blank" rel="noopener">
-  PDF
-</a>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -844,65 +809,95 @@
 </div>
 
 
-  
+<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 381px; max-height: 328px;">
+  <div style="position: relative">
+    <img src="/post/cka_walkthrough/featured_hu627ce78ad326a2c5e6d55762566345ee_24182_1200x2500_fit_q75_h2_lanczos_3.webp" width="381" height="328" alt="" class="featured-image">
+    <span class="article-header-caption">CKA map example from original paper</span>
+  </div>
 </div>
 
 
 
   <div class="article-container">
 
-    
+    <div class="article-style">
+      <details class="toc-inpage d-print-none  " open>
+  <summary class="font-weight-bold">Table of Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-overview">1. Overview</a></li>
+    <li><a href="#2-inputs-and-outputs">2. Inputs and Outputs</a></li>
+    <li><a href="#3-formula">3. Formula</a></li>
+  </ul>
+</nav>
+</details>
+<h2 id="1-overview">1. Overview</h2>
+<p>CKA (Centered Kernel Alignment) is a state-of-the-art tool for measuring the similarity of neural network representations. After reading the original paper, I wanted more intuition about how the CKA formulae capture similarity, so I spent some time breaking it down. This post is a summary of my understanding of CKA, and the derivations I worked out.</p>
+<h2 id="2-inputs-and-outputs">2. Inputs and Outputs</h2>
+<p>To run CKA, we must have 2 matrices of activations (aka representations) from the same neural network, or different neural networks.</p>
+<p>Let&rsquo;s call these matrices $X$ and $Y$. Let $X \in \mathbb{R}^{n \times d_1}$ and $Y \in \mathbb{R}^{n \times d_2}$, where $n$ is the number of samples and $d_i$ is the dimensionality of the representations. $d_1$ and $d_2$ can be different, but $n$ must be the same for both matrices, and must be the same corresponding examples.
+This means CKA lets us compare the similarity of representations that come from layers of differing widths. We also assume that these matrices have been <em>centered</em>.</p>
+<h2 id="3-formula">3. Formula</h2>
+<p>One formula for (linear) CKA is given by:
+$$\text{CKA}(X,Y) = \frac{\lVert Y^TX \rVert_F^2}{\lVert X^TX \rVert_F \lVert Y^TY \rVert_F}$$</p>
+<ol>
+<li>
+<p><strong>Breaking down the Numerator</strong> <br/>
+Let&rsquo;s first look at the numerator of the formula: $$\lVert Y^TX \rVert_F^2$$
+In Section 3 of <a href="https://arxiv.org/pdf/1905.00414" target="_blank" rel="noopener">Similarity of Neural Network Representations Revisited</a>, we are shown a way to link from dot products between examples to dot products between features: $$ \frac{\lVert Y^TX \rVert_F^2}{\lVert X^TX \rVert_F \lVert Y^TY \rVert_F} = \langle \text{vec}(XX^T), \text{vec}(YY^T)\rangle$$
+This is the key insight of CKA, where a computation comparing the multivariate features between the two matrices can actually translate to computing the similarity between examples, and then comparing the resulting similarity structures. Although we can expand the reduced formulation, it is much more helpful to expand the formuation as follows in order to reach the intuition presented by the authors. <br/><br/>
+We will work this the opposite way here, including more details to understand the intermediate steps. First, we will establish an important property of the Frobenius norm, and of the trace.</p>
+<ol>
+<li>
+<p>frobenius norm reformulation:
+$ \lVert A \rVert_F = \sqrt{\text{Tr}(A^TA)}$</p>
+</li>
+<li>
+<p>trace property (cyclic property):
+$\text{Tr}(ABC) = \text{Tr}(CAB) = \text{Tr}(BCA)$</p>
+</li>
+</ol>
+<p>Now, we can rewrite the numerator of the CKA formula as follows:
+$$
+\begin{align*}
+\lVert Y^TX \rVert_F^2 &amp;= \left(\sqrt{\text{Tr}((Y^TX)^T Y^TX)}\right)^2 &amp;&amp; \text{frobenius norm}\\\
+&amp;= Tr\left(X^TYY^TX\right) &amp;&amp; \text{sqrt and transpose} \\\
+&amp;= Tr\left(XX^TYY^T\right) &amp;&amp; \text{cyclic trace} \\\
+&amp;= \sum_i \left(XX^TYY^T\right)_{ii} &amp;&amp; \text{expanding trace} \\\
+&amp;= \sum_i \sum_j (XX^T)_{ij} (YY^T)_{ji}&amp;&amp; \text{expanding matmul} \\\
+&amp;= \sum_i \sum_j  (XX^T)_{ij} (YY^T)_{ij} &amp;&amp;\text{gram mats symm.} \\\
+&amp;= \langle \text{vec}(XX^T), \text{vec}(YY^T)\rangle &amp;&amp; \text{dot product def.}
+\end{align*}
+$$<br>
+Now we have a more complete understanding of the key Equation 1 in the paper, which relates feature similarity to the dot product between similarity structures.</p>
+</li>
+<li>
+<p><strong>Connection to the Hilbert Schmidt Independence Criterion</strong> <br/>
+Before formulating the connection to the Hilbert-Schmidt Independence Criterion (HSIC), we&rsquo;ll first recall the definition of the cross-covariance matrix
+$$\text{cov}(X,Y) = \frac{1}{n-1}\left(X - \mathbb{E}(X)\right)\left(Y - \mathbb{E}(Y)\right)^T$$ Now, we will connect the trace formulation from above to the covariance matrix. Remember that we assume our data matrices are already centered
+$$ \begin{align*}
+\lVert \text{cov}(X^T, Y^T)\rVert_F^2 &amp;= \lVert \frac{1}{n-1} X^TY \rVert_F^2&amp;&amp; \text{by def.&amp;center}\\\
+&amp;= \frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2 &amp;&amp; \text{scalar&amp;norm} \\\
+&amp; = \frac{1}{(n-1)^2} \text{Tr}\left(XX^TYY^T\right) &amp;&amp; \text{from above}
+\end{align*}$$
+Now, the HSIC was originaly proposed as a test statistic for determining if variables are independent. We will now go over the empirical estimator of the HSIC, with kernels $K$ and $L$ and centering matrix $H_n = I_n - \frac{1}{n} \mathbb{1}\mathbb{1}^T$ is
+$$ \text{HSIC}(K,L) = \frac{1}{(n-1)^2} \text{Tr}(KHLH)$$ However, the HSIC is not invariant to isotropic scaling, defined as $s(X,Y) = s(\alpha X, \beta Y)$ for similarity index $s$. For CKA, we would like this property. Therefore, the authors propose to use a normalized version. We now share the simplifications for a linear kernel CKA, and an arbitrary kernel CKA. For the linear kernel, we have
+$$ \text{HSIC}(X,Y) = \frac{1}{(n-1)^2}\text{Tr}(X^TXY^TY) $$ For linear CKA, we get
+$$ \begin{align*}
+\text{CKA}(X,Y) &amp;= \frac{\text{HSIC}(K,L)}{\sqrt{\text{HSIC}(K,K)\text{HSIC}(L,L)}} \\\
+&amp;= \frac{\frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2}{\sqrt{\frac{1}{(n-1)^2} \lVert X^TX \rVert_F^2 \frac{1}{(n-1)^2} \lVert Y^TY \rVert_F^2} }\\\
+&amp;= \frac{\frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2}{\frac{1}{n-1}\cdot \frac{1}{n-1} \lVert X^TX \rVert_F \lVert Y^TY \rVert_F} \\\
+&amp;=  \frac{\lVert Y^TX \rVert_F^2}{\lVert X^TX \rVert_F \lVert Y^TY \rVert_F}
+\end{align*} $$ For arbitrary kernel $K, L$, we simplify the CKA as following:
+$$ \begin{align*}
+CKA(K,L) &amp;= \frac{\text{HSIC}(K,L)}{\sqrt{\text{HSIC}(K,K)\text{HSIC}(L,L)}} \\\
+&amp;= \frac{\frac{1}{(n-1)^2} \text{Tr}(KHLH)}{\sqrt{\frac{1}{(n-1)^2}Tr(KHKH)\frac{1}{(n-1)^2}\text{Tr}(LHLH)}} \\\
+&amp;= \frac{\text{Tr}(KHLH)}{\sqrt{\text{Tr}(KHKH)\text{Tr}(LHLH)}} \\\
+\end{align*}$$</p>
+</li>
+</ol>
 
-    
-    
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading">Type</div>
-          <div class="col-12 col-md-9">
-            <a href="/publication/#2">
-              Journal article
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
     </div>
-    <div class="d-md-none space-below"></div>
-    
-
-    
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading">Publication</div>
-          <div class="col-12 col-md-9">Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation</div>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-    <div class="d-md-none space-below"></div>
-    
-
-    <div class="space-below"></div>
-
-    <div class="article-style"><!-- <div class="alert alert-note">
-  <div>
-    Click the <em>Cite</em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  </div>
-</div>
-
-
-<div class="alert alert-note">
-  <div>
-    Create your slides in Markdown - click the <em>Slides</em> button to check out the example.
-  </div>
-</div>
- -->
-<!-- Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). -->
-</div>
 
     
 
@@ -922,7 +917,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://nverma1.github.io/publication/rep_comb2023/&amp;text=Exploring%20Representational%20Disparities%20Between%20Multilingual%20and%20Bilingual%20Translation%20Models" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://nverma1.github.io/post/cka_walkthrough/&amp;text=Understanding%20CKA" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -935,7 +930,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://nverma1.github.io/publication/rep_comb2023/&amp;t=Exploring%20Representational%20Disparities%20Between%20Multilingual%20and%20Bilingual%20Translation%20Models" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://nverma1.github.io/post/cka_walkthrough/&amp;t=Understanding%20CKA" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -948,7 +943,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Exploring%20Representational%20Disparities%20Between%20Multilingual%20and%20Bilingual%20Translation%20Models&amp;body=https://nverma1.github.io/publication/rep_comb2023/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+        <a href="mailto:?subject=Understanding%20CKA&amp;body=https://nverma1.github.io/post/cka_walkthrough/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -961,7 +956,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://nverma1.github.io/publication/rep_comb2023/&amp;title=Exploring%20Representational%20Disparities%20Between%20Multilingual%20and%20Bilingual%20Translation%20Models" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+        <a href="https://www.linkedin.com/shareArticle?url=https://nverma1.github.io/post/cka_walkthrough/&amp;title=Understanding%20CKA" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -974,7 +969,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Exploring%20Representational%20Disparities%20Between%20Multilingual%20and%20Bilingual%20Translation%20Models%20https://nverma1.github.io/publication/rep_comb2023/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+        <a href="whatsapp://send?text=Understanding%20CKA%20https://nverma1.github.io/post/cka_walkthrough/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -987,7 +982,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://nverma1.github.io/publication/rep_comb2023/&amp;title=Exploring%20Representational%20Disparities%20Between%20Multilingual%20and%20Bilingual%20Translation%20Models" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://nverma1.github.io/post/cka_walkthrough/&amp;title=Understanding%20CKA" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1103,18 +1098,6 @@
 
 
   
-    
-
-
-
-
-  
-    
-
-
-
-
-  
 
 
 
@@ -1132,7 +1115,7 @@
 
 
   </div>
-</div>
+</article>
   </div>
 
   <div class="page-footer">
