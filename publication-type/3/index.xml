@@ -5,18 +5,18 @@
     <link>https://nverma1.github.io/publication-type/3/</link>
       <atom:link href="https://nverma1.github.io/publication-type/3/index.xml" rel="self" type="application/rss+xml" />
     <description>3</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 29 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 06 Jul 2025 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://nverma1.github.io/media/icon_hu663f8d75bcb2ce56f4f1e6f6a8251c5c_4446_512x512_fill_lanczos_center_3.png</url>
+      <url>https://nverma1.github.io/media/icon_hu_3fad65a55a7d302b.png</url>
       <title>3</title>
       <link>https://nverma1.github.io/publication-type/3/</link>
     </image>
     
     <item>
-      <title>Merging Feed Forward Sublayers for Compressed Transformers</title>
-      <link>https://nverma1.github.io/publication/merge_ffs/</link>
-      <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/merge_ffs/</guid>
+      <title>DOTResize: Reducing LLM Width via Discrete Optimal Transport-based Neuron Merging</title>
+      <link>https://nverma1.github.io/publication/dotresize2025/</link>
+      <pubDate>Sun, 06 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://nverma1.github.io/publication/dotresize2025/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -35,10 +35,10 @@
     </item>
     
     <item>
-      <title>Merging Text Transformer Models from Different Initializations</title>
-      <link>https://nverma1.github.io/publication/merge2024/</link>
-      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/merge2024/</guid>
+      <title>Merging Feed-Forward Sublayers for Compressed Transformers</title>
+      <link>https://nverma1.github.io/publication/mergeff2025/</link>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://nverma1.github.io/publication/mergeff2025/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
