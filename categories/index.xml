@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories | Neha Verma</title>
+    <link>https://nverma1.github.io/categories/</link>
+      <atom:link href="https://nverma1.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <description>Categories</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <image>
+      <url>https://nverma1.github.io/media/icon_hu_b74de89b93264f55.png</url>
+      <title>Categories</title>
+      <link>https://nverma1.github.io/categories/</link>
+    </image>
+    
+  </channel>
+</rss>

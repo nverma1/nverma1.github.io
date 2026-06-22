@@ -1,0 +1,1106 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Neha Verma" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Explaining Centered Kernel Alignment (CKA) in more detail, and working out some of the derivations from the original Kornblith et al. paper." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://nverma1.github.io/post/cka_walkthrough/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" integrity="sha384-AHAnt9ZhGeHIrydA1Kp1L7FN+2UosbF7RQg6C+9Is/a7kDpQ1684C2iH2VWil6r4" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.22253bbeaa7bc6394eab000a624427df.css" />
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu_e9522a0599b34a09.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_5724795883c4f02b.png" />
+
+  <link rel="canonical" href="https://nverma1.github.io/post/cka_walkthrough/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="Neha Verma" />
+  <meta property="og:url" content="https://nverma1.github.io/post/cka_walkthrough/" />
+  <meta property="og:title" content="Centered Kernel Alignment (CKA) in Detail | Neha Verma" />
+  <meta property="og:description" content="Explaining Centered Kernel Alignment (CKA) in more detail, and working out some of the derivations from the original Kornblith et al. paper." /><meta property="og:image" content="https://nverma1.github.io/post/cka_walkthrough/featured.png" />
+    <meta property="twitter:image" content="https://nverma1.github.io/post/cka_walkthrough/featured.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-10-04T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-10-04T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nverma1.github.io/post/cka_walkthrough/"
+  },
+  "headline": "Centered Kernel Alignment (CKA) in Detail",
+  
+  "image": [
+    "https://nverma1.github.io/post/cka_walkthrough/featured.png"
+  ],
+  
+  "datePublished": "2024-10-04T00:00:00Z",
+  "dateModified": "2024-10-04T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Neha Verma"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Neha Verma",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nverma1.github.io/media/icon_hu_52e6529056b92226.png"
+    }
+  },
+  "description": "Explaining Centered Kernel Alignment (CKA) in more detail, and working out some of the derivations from the original Kornblith et al. paper."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Centered Kernel Alignment (CKA) in Detail | Neha Verma</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d34b8d0aa0e75bd0d5735141937502c4" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Neha Verma</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Neha Verma</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>About</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication/"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post/"><span>Blog</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/uploads/cv.pdf"><span>CV</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/birds/"><span>(for fun) 🐦</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Centered Kernel Alignment (CKA) in Detail</h1>
+
+  
+  <p class="page-subtitle">CKA is a state-of-the-art tool to measure the similarity of neural network representations, but in this post, I walk through its derivation in detail for a deeper understanding. [<a href="https://arxiv.org/pdf/1905.00414" target="_blank" rel="noopener">Original paper</a>]</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Oct 4, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 381px; max-height: 328px;">
+  <div style="position: relative">
+    <img src="/post/cka_walkthrough/featured_hu_b846ac56c7ddfc01.webp" width="381" height="328" alt="" class="featured-image">
+    <span class="article-header-caption">CKA map example from original paper</span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="1-overview">1. Overview</h2>
+<p>CKA (Centered Kernel Alignment) is a state-of-the-art tool for measuring the similarity of neural network representations. It has practical uses such as comparing layers within a single model, comparing representations across two different architectures, or studying how representations evolve during training. After reading the original paper, I wanted more intuition about how the CKA formulae capture similarity, so I spent some time breaking it down. This post is a summary of my understanding of CKA and the derivations I worked out.</p>
+<p>In summary, the key insight of CKA is the use of gram matrices that collapse the neuron dimension and instead compare inter-sample similarities, making the measure invariant to the width or bases of the layers being compared.</p>
+<h2 id="2-inputs-and-outputs">2. Inputs and Outputs</h2>
+<p>To run CKA, we must have 2 matrices of paired activations (aka representations) from the same neural network, or different neural networks.</p>
+<p>Let&rsquo;s call these matrices $X$ and $Y$. Let $X \in \mathbb{R}^{n \times d_1}$ and $Y \in \mathbb{R}^{n \times d_2}$, where $n$ is the number of samples and $d_i$ is the dimensionality of the representations. $d_1$ and $d_2$ can be different, but $n$ must be the same for both matrices as these represent paired samples.
+This means CKA lets us compare the similarity of representations that come from layers of differing widths. We also assume that these matrices have been <em>centered</em>, that is, the column means have been subtracted. Centering ensures the similarity measure is not skewed by constant offsets in activations, and is required for the HSIC connection discussed in Section 3.</p>
+<h2 id="3-formula">3. Formula</h2>
+<p>One formula for (linear) CKA is given by:
+$$\text{CKA}(X,Y) = \frac{\lVert Y^TX \rVert_F^2}{\lVert X^TX \rVert_F \lVert Y^TY \rVert_F}$$</p>
+<p>Let&rsquo;s break down this equation:</p>
+<ol>
+<li>
+<p><strong>Breaking down the Numerator</strong> <br/>
+Let&rsquo;s first look at the numerator of the formula: $$\lVert Y^TX \rVert_F^2$$
+In Section 3 of <a href="https://arxiv.org/pdf/1905.00414" target="_blank" rel="noopener">Similarity of Neural Network Representations Revisited</a>, we are shown a way to link from dot products between examples to dot products between features: $$ \lVert Y^TX \rVert_F^2 = \langle \text{vec}(XX^T), \text{vec}(YY^T)\rangle$$
+This is the key insight of CKA, where a computation comparing the multivariate features between the two matrices can actually translate to computing the similarity between examples, and then comparing the resulting similarity structures. We will expand the formulation as follows in order to reach the intuition presented by the authors. <br/><br/>
+We will work this the opposite way here, including more details to understand the intermediate steps. First, we will establish an important property of the Frobenius norm, and of the trace.</p>
+<ol>
+<li>
+<p>frobenius norm reformulation:
+$\lVert A \rVert_F = \sqrt{\text{Tr}(A^TA)}$</p>
+</li>
+<li>
+<p>trace property (cyclic property):
+$\text{Tr}(ABC) = \text{Tr}(CAB) = \text{Tr}(BCA)$</p>
+</li>
+</ol>
+<p>Now, we can rewrite the numerator of the CKA formula as follows:</p>
+</li>
+</ol>
+<div>
+$$
+\begin{align*}
+\lVert Y^TX \rVert_F^2 &= \left(\sqrt{\text{Tr}((Y^TX)^T Y^TX)}\right)^2 && \text{frobenius norm}\\
+&= \text{Tr}\left(X^TYY^TX\right) && \text{sqrt and transpose} \\
+&= \text{Tr}\left(XX^TYY^T\right) && \text{cyclic trace} \\
+&= \sum_i \left(XX^TYY^T\right)_{ii} && \text{expanding trace} \\
+&= \sum_i \sum_j (XX^T)_{ij} (YY^T)_{ji} && \text{expanding matmul} \\
+&= \sum_i \sum_j (XX^T)_{ij} (YY^T)_{ij} && \text{gram mats symm.} \\
+&= \langle \text{vec}(XX^T), \text{vec}(YY^T)\rangle && \text{dot product def.}
+\end{align*}
+$$
+</div>
+Now we have a more complete understanding of the key Equation 1 in the paper, which relates feature similarity to the dot product between similarity structures.
+<p><br/><br/></p>
+<ol start="2">
+<li><strong>Connection to the Hilbert Schmidt Independence Criterion</strong> <br/>
+Before formulating the connection to the Hilbert-Schmidt Independence Criterion (HSIC), we&rsquo;ll first recall the definition of the cross-covariance matrix
+$$\text{cov}(X,Y) = \frac{1}{n-1}\left(X - \mathbb{E}(X)\right)\left(Y - \mathbb{E}(Y)\right)^T$$ Now, we will connect the trace formulation from above to the covariance matrix. Remember that we assume our data matrices are already centered</li>
+</ol>
+<div>
+$$\begin{align*}
+\lVert \text{cov}(X^T, Y^T)\rVert_F^2 &= \left\lVert \frac{1}{n-1} X^TY \right\rVert_F^2 && \text{by def. & center}\\
+&= \frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2 && \text{scalar & norm} \\
+&= \frac{1}{(n-1)^2} \text{Tr}\left(XX^TYY^T\right) && \text{from above}
+\end{align*}$$
+</div>
+The HSIC was originally proposed as a test statistic for determining if two variables are independent. The empirical estimator of HSIC, with kernels $K$ and $L$ and centering matrix $H_n = I_n - \frac{1}{n} \mathbb{1}\mathbb{1}^T$, is defined as:
+$$ \text{HSIC}(K,L) = \frac{1}{(n-1)^2} \text{Tr}(KHLH)$$
+<p>However, HSIC is not invariant to isotropic scaling — i.e., it does not satisfy $s(X,Y) = s(\alpha X, \beta Y)$ for a similarity index $s$. For CKA, we would like this property so that the score is not affected by the scale of the activations. Therefore, the authors propose a normalized version. We now derive the simplifications for both the linear kernel and the arbitrary kernel cases. For the linear kernel, we have:
+$$ \text{HSIC}(X,Y) = \frac{1}{(n-1)^2}\text{Tr}(X^TXY^TY) $$</p>
+<p>For linear CKA, we get:</p>
+<div>
+$$\begin{align*}
+\text{CKA}(X,Y) &= \frac{\text{HSIC}(K,L)}{\sqrt{\text{HSIC}(K,K)\text{HSIC}(L,L)}} \\
+&= \frac{\frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2}{\sqrt{\frac{1}{(n-1)^2} \lVert X^TX \rVert_F^2 \frac{1}{(n-1)^2} \lVert Y^TY \rVert_F^2} }\\
+&= \frac{\frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2}{\frac{1}{n-1}\cdot \frac{1}{n-1} \lVert X^TX \rVert_F \lVert Y^TY \rVert_F} \\
+&= \frac{\lVert Y^TX \rVert_F^2}{\lVert X^TX \rVert_F \lVert Y^TY \rVert_F}
+\end{align*}$$
+</div>
+<p>For an arbitrary kernel $K, L$, we simplify CKA as follows:</p>
+<div>
+$$\begin{align*}
+\text{CKA}(K,L) &= \frac{\text{HSIC}(K,L)}{\sqrt{\text{HSIC}(K,K)\text{HSIC}(L,L)}} \\
+&= \frac{\frac{1}{(n-1)^2} \text{Tr}(KHLH)}{\sqrt{\frac{1}{(n-1)^2}\text{Tr}(KHKH)\frac{1}{(n-1)^2}\text{Tr}(LHLH)}} \\
+&= \frac{\text{Tr}(KHLH)}{\sqrt{\text{Tr}(KHKH)\text{Tr}(LHLH)}}
+\end{align*}$$
+</div>
+<p>Together, these two formulations give a practical and kernel-flexible way to compare neural network representations, invariant to isotropic scaling and applicable across layers of any width.</p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/deep-learning/">Deep-Learning</a>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.19a5d57ef3745059844b056de5d43502.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" integrity="sha384-fzynIBFTXouN5sCW5v9wGA9w2UjgdNB4R93TBffnKKFRZ/cLgfE+XyOu4l3MCwEB" crossorigin="anonymous"></script>
+        
+        
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" integrity="sha384-uVgURgrQc4cT8pJLc+0unFNUhQiSI/tG8/OYoBoU6kYuCEt7CAvtfeIXW/spUMRi" crossorigin="anonymous"></script>
+        
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.f4712e93c641288ae5ae486483717e2c.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.40e78fde088e3ffadb839862c383ccf5.js"></script>
+
+    
+    
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.af9327db0521d4a01354bfc8b77a4324.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

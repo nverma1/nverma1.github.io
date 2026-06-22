@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep-Learning | Neha Verma</title>
+    <link>https://nverma1.github.io/tag/deep-learning/</link>
+      <atom:link href="https://nverma1.github.io/tag/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>Deep-Learning</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 04 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://nverma1.github.io/media/icon_hu_b74de89b93264f55.png</url>
+      <title>Deep-Learning</title>
+      <link>https://nverma1.github.io/tag/deep-learning/</link>
+    </image>
+    
+    <item>
+      <title>Centered Kernel Alignment (CKA) in Detail</title>
+      <link>https://nverma1.github.io/post/cka_walkthrough/</link>
+      <pubDate>Fri, 04 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://nverma1.github.io/post/cka_walkthrough/</guid>
+      <description>&lt;h2 id=&#34;1-overview&#34;&gt;1. Overview&lt;/h2&gt;
+&lt;p&gt;CKA (Centered Kernel Alignment) is a state-of-the-art tool for measuring the similarity of neural network representations. It has practical uses such as comparing layers within a single model, comparing representations across two different architectures, or studying how representations evolve during training. After reading the original paper, I wanted more intuition about how the CKA formulae capture similarity, so I spent some time breaking it down. This post is a summary of my understanding of CKA and the derivations I worked out.&lt;/p&gt;
+&lt;p&gt;In summary, the key insight of CKA is the use of gram matrices that collapse the neuron dimension and instead compare inter-sample similarities, making the measure invariant to the width or bases of the layers being compared.&lt;/p&gt;
+&lt;h2 id=&#34;2-inputs-and-outputs&#34;&gt;2. Inputs and Outputs&lt;/h2&gt;
+&lt;p&gt;To run CKA, we must have 2 matrices of paired activations (aka representations) from the same neural network, or different neural networks.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s call these matrices $X$ and $Y$. Let $X \in \mathbb{R}^{n \times d_1}$ and $Y \in \mathbb{R}^{n \times d_2}$, where $n$ is the number of samples and $d_i$ is the dimensionality of the representations. $d_1$ and $d_2$ can be different, but $n$ must be the same for both matrices as these represent paired samples.
+This means CKA lets us compare the similarity of representations that come from layers of differing widths. We also assume that these matrices have been &lt;em&gt;centered&lt;/em&gt;, that is, the column means have been subtracted. Centering ensures the similarity measure is not skewed by constant offsets in activations, and is required for the HSIC connection discussed in Section 3.&lt;/p&gt;
+&lt;h2 id=&#34;3-formula&#34;&gt;3. Formula&lt;/h2&gt;
+&lt;p&gt;One formula for (linear) CKA is given by:
+$$\text{CKA}(X,Y) = \frac{\lVert Y^TX \rVert_F^2}{\lVert X^TX \rVert_F \lVert Y^TY \rVert_F}$$&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s break down this equation:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Breaking down the Numerator&lt;/strong&gt; &lt;br/&gt;
+Let&amp;rsquo;s first look at the numerator of the formula: $$\lVert Y^TX \rVert_F^2$$
+In Section 3 of &lt;a href=&#34;https://arxiv.org/pdf/1905.00414&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Similarity of Neural Network Representations Revisited&lt;/a&gt;, we are shown a way to link from dot products between examples to dot products between features: $$ \lVert Y^TX \rVert_F^2 = \langle \text{vec}(XX^T), \text{vec}(YY^T)\rangle$$
+This is the key insight of CKA, where a computation comparing the multivariate features between the two matrices can actually translate to computing the similarity between examples, and then comparing the resulting similarity structures. We will expand the formulation as follows in order to reach the intuition presented by the authors. &lt;br/&gt;&lt;br/&gt;
+We will work this the opposite way here, including more details to understand the intermediate steps. First, we will establish an important property of the Frobenius norm, and of the trace.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;frobenius norm reformulation:
+$\lVert A \rVert_F = \sqrt{\text{Tr}(A^TA)}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;trace property (cyclic property):
+$\text{Tr}(ABC) = \text{Tr}(CAB) = \text{Tr}(BCA)$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, we can rewrite the numerator of the CKA formula as follows:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div&gt;
+$$
+\begin{align*}
+\lVert Y^TX \rVert_F^2 &amp;= \left(\sqrt{\text{Tr}((Y^TX)^T Y^TX)}\right)^2 &amp;&amp; \text{frobenius norm}\\
+&amp;= \text{Tr}\left(X^TYY^TX\right) &amp;&amp; \text{sqrt and transpose} \\
+&amp;= \text{Tr}\left(XX^TYY^T\right) &amp;&amp; \text{cyclic trace} \\
+&amp;= \sum_i \left(XX^TYY^T\right)_{ii} &amp;&amp; \text{expanding trace} \\
+&amp;= \sum_i \sum_j (XX^T)_{ij} (YY^T)_{ji} &amp;&amp; \text{expanding matmul} \\
+&amp;= \sum_i \sum_j (XX^T)_{ij} (YY^T)_{ij} &amp;&amp; \text{gram mats symm.} \\
+&amp;= \langle \text{vec}(XX^T), \text{vec}(YY^T)\rangle &amp;&amp; \text{dot product def.}
+\end{align*}
+$$
+&lt;/div&gt;
+Now we have a more complete understanding of the key Equation 1 in the paper, which relates feature similarity to the dot product between similarity structures.
+&lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Connection to the Hilbert Schmidt Independence Criterion&lt;/strong&gt; &lt;br/&gt;
+Before formulating the connection to the Hilbert-Schmidt Independence Criterion (HSIC), we&amp;rsquo;ll first recall the definition of the cross-covariance matrix
+$$\text{cov}(X,Y) = \frac{1}{n-1}\left(X - \mathbb{E}(X)\right)\left(Y - \mathbb{E}(Y)\right)^T$$ Now, we will connect the trace formulation from above to the covariance matrix. Remember that we assume our data matrices are already centered&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div&gt;
+$$\begin{align*}
+\lVert \text{cov}(X^T, Y^T)\rVert_F^2 &amp;= \left\lVert \frac{1}{n-1} X^TY \right\rVert_F^2 &amp;&amp; \text{by def. &amp; center}\\
+&amp;= \frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2 &amp;&amp; \text{scalar &amp; norm} \\
+&amp;= \frac{1}{(n-1)^2} \text{Tr}\left(XX^TYY^T\right) &amp;&amp; \text{from above}
+\end{align*}$$
+&lt;/div&gt;
+The HSIC was originally proposed as a test statistic for determining if two variables are independent. The empirical estimator of HSIC, with kernels $K$ and $L$ and centering matrix $H_n = I_n - \frac{1}{n} \mathbb{1}\mathbb{1}^T$, is defined as:
+$$ \text{HSIC}(K,L) = \frac{1}{(n-1)^2} \text{Tr}(KHLH)$$
+&lt;p&gt;However, HSIC is not invariant to isotropic scaling — i.e., it does not satisfy $s(X,Y) = s(\alpha X, \beta Y)$ for a similarity index $s$. For CKA, we would like this property so that the score is not affected by the scale of the activations. Therefore, the authors propose a normalized version. We now derive the simplifications for both the linear kernel and the arbitrary kernel cases. For the linear kernel, we have:
+$$ \text{HSIC}(X,Y) = \frac{1}{(n-1)^2}\text{Tr}(X^TXY^TY) $$&lt;/p&gt;
+&lt;p&gt;For linear CKA, we get:&lt;/p&gt;
+&lt;div&gt;
+$$\begin{align*}
+\text{CKA}(X,Y) &amp;= \frac{\text{HSIC}(K,L)}{\sqrt{\text{HSIC}(K,K)\text{HSIC}(L,L)}} \\
+&amp;= \frac{\frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2}{\sqrt{\frac{1}{(n-1)^2} \lVert X^TX \rVert_F^2 \frac{1}{(n-1)^2} \lVert Y^TY \rVert_F^2} }\\
+&amp;= \frac{\frac{1}{(n-1)^2} \lVert Y^TX \rVert_F^2}{\frac{1}{n-1}\cdot \frac{1}{n-1} \lVert X^TX \rVert_F \lVert Y^TY \rVert_F} \\
+&amp;= \frac{\lVert Y^TX \rVert_F^2}{\lVert X^TX \rVert_F \lVert Y^TY \rVert_F}
+\end{align*}$$
+&lt;/div&gt;
+&lt;p&gt;For an arbitrary kernel $K, L$, we simplify CKA as follows:&lt;/p&gt;
+&lt;div&gt;
+$$\begin{align*}
+\text{CKA}(K,L) &amp;= \frac{\text{HSIC}(K,L)}{\sqrt{\text{HSIC}(K,K)\text{HSIC}(L,L)}} \\
+&amp;= \frac{\frac{1}{(n-1)^2} \text{Tr}(KHLH)}{\sqrt{\frac{1}{(n-1)^2}\text{Tr}(KHKH)\frac{1}{(n-1)^2}\text{Tr}(LHLH)}} \\
+&amp;= \frac{\text{Tr}(KHLH)}{\sqrt{\text{Tr}(KHKH)\text{Tr}(LHLH)}}
+\end{align*}$$
+&lt;/div&gt;
+&lt;p&gt;Together, these two formulations give a practical and kernel-flexible way to compare neural network representations, invariant to isotropic scaling and applicable across layers of any width.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
