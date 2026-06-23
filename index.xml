@@ -32,8 +32,8 @@
   &lt;figcaption&gt;Double-crested cormorant&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;figure class=&#34;bird-item&#34;&gt;
-  &lt;img src=&#34;common_yellowthroat.jpeg&#34; alt=&#34;Common Yellowthroat&#34; loading=&#34;lazy&#34;&gt;
-  &lt;figcaption&gt;Common Yellowthroat&lt;/figcaption&gt;
+  &lt;img src=&#34;common_yellowthroat.jpeg&#34; alt=&#34;Common yellowthroat&#34; loading=&#34;lazy&#34;&gt;
+  &lt;figcaption&gt;Common yellowthroat&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;figure class=&#34;bird-item&#34;&gt;
   &lt;img src=&#34;baltimore_oriole.jpeg&#34; alt=&#34;Baltimore oriole&#34; loading=&#34;lazy&#34;&gt;
