@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en-us" >
 
 
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -67,7 +67,7 @@
   <meta name="description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://nverma1.github.io/" />
+  <link rel="alternate" hreflang="en-us" href="http://localhost:1313/" />
 
   
   
@@ -80,7 +80,7 @@
 
   
 
-  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/css/vendor-bundle.min.css" media="print" onload="this.media='all'">
 
   
   
@@ -262,7 +262,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/wowchemy.22253bbeaa7bc6394eab000a624427df.css" />
+  <link rel="stylesheet" href="/css/wowchemy.css" />
 
   
   
@@ -293,7 +293,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu_e9522a0599b34a09.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu_5724795883c4f02b.png" />
 
-  <link rel="canonical" href="https://nverma1.github.io/" />
+  <link rel="canonical" href="http://localhost:1313/" />
 
   
   
@@ -319,10 +319,10 @@
     <meta property="twitter:creator" content="@wowchemy" />
   
   <meta property="og:site_name" content="Neha Verma" />
-  <meta property="og:url" content="https://nverma1.github.io/" />
+  <meta property="og:url" content="http://localhost:1313/" />
   <meta property="og:title" content="Neha Verma" />
-  <meta property="og:description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." /><meta property="og:image" content="https://nverma1.github.io/media/icon_hu_b74de89b93264f55.png" />
-    <meta property="twitter:image" content="https://nverma1.github.io/media/icon_hu_b74de89b93264f55.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." /><meta property="og:image" content="http://localhost:1313/media/icon_hu_b74de89b93264f55.png" />
+    <meta property="twitter:image" content="http://localhost:1313/media/icon_hu_b74de89b93264f55.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta property="og:updated_time" content="2026-06-22T00:00:00&#43;00:00" />
@@ -337,10 +337,10 @@
   "@type": "WebSite",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://nverma1.github.io/?q={search_term_string}",
+    "target": "http://localhost:1313/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   },
-  "url": "https://nverma1.github.io/"
+  "url": "http://localhost:1313/"
 }
 </script>
 
@@ -370,7 +370,7 @@
   
   
   
-  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+  <script src="/js/wowchemy-init.min.js"></script>
 
   
 
@@ -876,22 +876,14 @@
       <p>I am a Computer Science Ph.D. Student at the <a href="https://www.clsp.jhu.edu/" target="_blank" rel="noopener">Center for Language and Speech Processing</a> at Johns Hopkins University, supervised by <a href="https://www.cs.jhu.edu/~kevinduh/" target="_blank" rel="noopener">Kevin Duh</a> and <a href="https://kentonmurray.com/" target="_blank" rel="noopener">Kenton Murray</a>.</p>
 <p>I have previously interned with <a href="https://nikhil-dce.github.io/" target="_blank" rel="noopener">Nikhil Mehta</a> at Google/Google DeepMind and with <a href="https://elbayadm.github.io/" target="_blank" rel="noopener">Maha Elbayad</a> at Meta FAIR.
 Before JHU, I was at Yale University studying math and computer science, and working with <a href="http://www.cs.yale.edu/homes/radev/" target="_blank" rel="noopener">Dragomir Radev</a> at the <a href="https://yale-lily.github.io/" target="_blank" rel="noopener">Yale LILY Lab</a>.</p>
-<p>My current research interests are in making language models <strong>more efficient to produce and deploy by exploiting structure in their weights:</strong> using redundancy and symmetry to compress models or merge them through direct parameter interventions, without retraining. More specifically, these are the areas I am working on:</p>
+<p>My current research interests are in making language models <strong>more efficient to produce and deploy by exploiting structure in their weights:</strong> using redundancy and symmetries to compress models or merge them through direct parameter interventions, without retraining. More specifically, these are the areas I am working on:</p>
 <ul>
-<li>
-<p><strong>Redundancy and compression:</strong> Our recent work on <a href="https://arxiv.org/abs/2501.06126" target="_blank" rel="noopener">feed-forward parameter sharing</a> and <a href="https://arxiv.org/abs/2507.04517" target="_blank" rel="noopener">optimal-transport based model width reduction</a> demonstrate compression via targeting redundant structures in LLMs and other pretrained transformers.</p>
-</li>
-<li>
-<p><strong>Merging to enable seamless post-training:</strong> We recently proposed <a href="https://arxiv.org/abs/2605.12419" target="_blank" rel="noopener">ORBIT</a>, which reduces catastrophic forgetting of LLM abilities via a novel model merging technique while performing SFT on specialized domain data.</p>
-</li>
-<li>
-<p><strong>Weight symmetries and the geometry of merging:</strong> Our paper on <a href="https://arxiv.org/abs/2403.00986" target="_blank" rel="noopener">merging text transformers</a> explores the connection between different SGD solutions via our proposed model merging technique that exploits numerous transformer symmetries.</p>
-</li>
+<li><strong>Redundancy and compression:</strong> Our recent work on <a href="https://arxiv.org/abs/2501.06126" target="_blank" rel="noopener">feed-forward parameter sharing</a> and <a href="https://arxiv.org/abs/2507.04517" target="_blank" rel="noopener">optimal-transport based model width reduction</a> demonstrate compression via targeting redundant structures in LLMs and other pretrained transformers.</li>
+<li><strong>Merging for seamless post-training:</strong> We recently proposed <a href="https://arxiv.org/abs/2605.12419" target="_blank" rel="noopener">ORBIT</a>, which reduces catastrophic forgetting of core LLM abilities via a novel model merging technique while performing SFT on specialized domain data.</li>
+<li><strong>Model merging and weight symmetries:</strong> Our paper on <a href="https://arxiv.org/abs/2403.00986" target="_blank" rel="noopener">merging text transformers</a> explores the connection between different SGD solutions via our proposed model merging technique that exploits numerous transformer symmetries.</li>
 </ul>
 <p>I have also worked extensively in multilingual NLP and machine translation (MT). See my publications page for more details!</p>
 <p>If you would like to get in contact with me, please reach me at nverma7 (at) jhu (dot) edu.</p>
-<!-- 
-  <i class="fas fa-download  pr-1 fa-fw"></i> Download my <a href="/uploads/demo_resume.pdf" target="_blank">resumé</a>. -->
 
     </div>
 
@@ -968,7 +960,7 @@ Before JHU, I was at Yale University studying math and computer science, and wor
       
 
     
-    <script src="/js/vendor-bundle.min.19a5d57ef3745059844b056de5d43502.js"></script>
+    <script src="/js/vendor-bundle.min.js"></script>
 
     
     
@@ -1067,7 +1059,7 @@ Before JHU, I was at Yale University studying math and computer science, and wor
       
     
     
-    <script src="/en/js/wowchemy.min.40e78fde088e3ffadb839862c383ccf5.js"></script>
+    <script src="/en/js/wowchemy.min.js"></script>
 
     
     
@@ -1101,7 +1093,7 @@ Before JHU, I was at Yale University studying math and computer science, and wor
   </div>
 </div>
 
-      <script src="/js/wowchemy-publication.af9327db0521d4a01354bfc8b77a4324.js" type="module"></script>
+      <script src="/js/wowchemy-publication.js" type="module"></script>
 
 
 

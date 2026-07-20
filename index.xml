@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Neha Verma</title>
-    <link>https://nverma1.github.io/</link>
-      <atom:link href="https://nverma1.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/</link>
+      <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <description>Neha Verma</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Jun 2026 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://nverma1.github.io/media/icon_hu_b74de89b93264f55.png</url>
+      <url>http://localhost:1313/media/icon_hu_b74de89b93264f55.png</url>
       <title>Neha Verma</title>
-      <link>https://nverma1.github.io/</link>
+      <link>http://localhost:1313/</link>
     </image>
     
     <item>
       <title>🐦 Birds</title>
-      <link>https://nverma1.github.io/birds/</link>
+      <link>http://localhost:1313/birds/</link>
       <pubDate>Mon, 22 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/birds/</guid>
+      <guid>http://localhost:1313/birds/</guid>
       <description>&lt;p&gt;Welcome to my birding page. I have recently really been enjoying photographing birds and have decided that this is the best place I can share some of my favorite pictures. I&amp;rsquo;ll try to keep this semi-updated as I take more photos. Enjoy!&lt;/p&gt;
 &lt;div class=&#34;bird-gallery&#34;&gt;
 &lt;figure class=&#34;bird-item&#34;&gt;
@@ -73,17 +73,17 @@
     
     <item>
       <title>ORBIT: Preserving Foundational Language Capabilities in GenRetrieval via Origin-Regulated Merging</title>
-      <link>https://nverma1.github.io/publication/orbit2026/</link>
+      <link>http://localhost:1313/publication/orbit2026/</link>
       <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/orbit2026/</guid>
+      <guid>http://localhost:1313/publication/orbit2026/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DOTResize: Reducing LLM Width via Discrete Optimal Transport-based Neuron Merging</title>
-      <link>https://nverma1.github.io/publication/dotresize2025/</link>
+      <link>http://localhost:1313/publication/dotresize2025/</link>
       <pubDate>Sun, 06 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/dotresize2025/</guid>
+      <guid>http://localhost:1313/publication/dotresize2025/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -103,9 +103,9 @@
     
     <item>
       <title>Merging Feed-Forward Sublayers for Compressed Transformers</title>
-      <link>https://nverma1.github.io/publication/mergeff2025/</link>
+      <link>http://localhost:1313/publication/mergeff2025/</link>
       <pubDate>Fri, 10 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/mergeff2025/</guid>
+      <guid>http://localhost:1313/publication/mergeff2025/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -125,9 +125,9 @@
     
     <item>
       <title>Centered Kernel Alignment (CKA) in Detail</title>
-      <link>https://nverma1.github.io/post/cka_walkthrough/</link>
+      <link>http://localhost:1313/post/cka_walkthrough/</link>
       <pubDate>Fri, 04 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/post/cka_walkthrough/</guid>
+      <guid>http://localhost:1313/post/cka_walkthrough/</guid>
       <description>&lt;h2 id=&#34;1-overview&#34;&gt;1. Overview&lt;/h2&gt;
 &lt;p&gt;CKA (Centered Kernel Alignment) is a state-of-the-art tool for measuring the similarity of neural network representations. It has practical uses such as comparing layers within a single model, comparing representations across two different architectures, or studying how representations evolve during training. After reading the original paper, I wanted more intuition about how the CKA formulae capture similarity, so I spent some time breaking it down. This post is a summary of my understanding of CKA and the derivations I worked out.&lt;/p&gt;
 &lt;p&gt;In summary, the key insight of CKA is the use of gram matrices that collapse the neuron dimension and instead compare inter-sample similarities, making the measure invariant to the width or bases of the layers being compared.&lt;/p&gt;
@@ -213,9 +213,9 @@ $$\begin{align*}
     
     <item>
       <title>Merging Text Transformer Models from Different Initializations</title>
-      <link>https://nverma1.github.io/publication/merge2024/</link>
+      <link>http://localhost:1313/publication/merge2024/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/merge2024/</guid>
+      <guid>http://localhost:1313/publication/merge2024/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -235,9 +235,9 @@ $$\begin{align*}
     
     <item>
       <title>Exploring Representational Disparities Between Multilingual and Bilingual Translation Models</title>
-      <link>https://nverma1.github.io/publication/rep_comb2023/</link>
+      <link>http://localhost:1313/publication/rep_comb2023/</link>
       <pubDate>Thu, 23 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/rep_comb2023/</guid>
+      <guid>http://localhost:1313/publication/rep_comb2023/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -257,9 +257,9 @@ $$\begin{align*}
     
     <item>
       <title>Multilingual Pixel Representations for Translation and Effective Cross-lingual Transfer</title>
-      <link>https://nverma1.github.io/publication/liz2023/</link>
+      <link>http://localhost:1313/publication/liz2023/</link>
       <pubDate>Wed, 06 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/liz2023/</guid>
+      <guid>http://localhost:1313/publication/liz2023/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -279,9 +279,9 @@ $$\begin{align*}
     
     <item>
       <title>JHU IWSLT 2023 Dialect Speech Translation System Description</title>
-      <link>https://nverma1.github.io/publication/iwslt23_dialect/</link>
+      <link>http://localhost:1313/publication/iwslt23_dialect/</link>
       <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/iwslt23_dialect/</guid>
+      <guid>http://localhost:1313/publication/iwslt23_dialect/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -301,9 +301,9 @@ $$\begin{align*}
     
     <item>
       <title>JHU IWSLT 2023 Multilingual Speech Translation System Description</title>
-      <link>https://nverma1.github.io/publication/iwslt23_multi/</link>
+      <link>http://localhost:1313/publication/iwslt23_multi/</link>
       <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/iwslt23_multi/</guid>
+      <guid>http://localhost:1313/publication/iwslt23_multi/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -323,9 +323,9 @@ $$\begin{align*}
     
     <item>
       <title>IsoVec: Controlling the Relative Isomorphism of Word Embedding Spaces</title>
-      <link>https://nverma1.github.io/publication/emnlp2022/</link>
+      <link>http://localhost:1313/publication/emnlp2022/</link>
       <pubDate>Thu, 01 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/emnlp2022/</guid>
+      <guid>http://localhost:1313/publication/emnlp2022/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -345,9 +345,9 @@ $$\begin{align*}
     
     <item>
       <title>Neural Natural Language Processing for unstructured data in electronic health records: A review</title>
-      <link>https://nverma1.github.io/publication/ehr_review/</link>
+      <link>http://localhost:1313/publication/ehr_review/</link>
       <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/ehr_review/</guid>
+      <guid>http://localhost:1313/publication/ehr_review/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -367,9 +367,9 @@ $$\begin{align*}
     
     <item>
       <title>Strategies for Adapting Multilingual Pre-training for Domain-Specific Machine Translation</title>
-      <link>https://nverma1.github.io/publication/amta2022/</link>
+      <link>http://localhost:1313/publication/amta2022/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/amta2022/</guid>
+      <guid>http://localhost:1313/publication/amta2022/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -389,9 +389,9 @@ $$\begin{align*}
     
     <item>
       <title>FeTaQA: Free-form Table Question Answering</title>
-      <link>https://nverma1.github.io/publication/tacl2022/</link>
+      <link>http://localhost:1313/publication/tacl2022/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/tacl2022/</guid>
+      <guid>http://localhost:1313/publication/tacl2022/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -411,9 +411,9 @@ $$\begin{align*}
     
     <item>
       <title>DART: Open-Domain Structured Data Record to Text Generation</title>
-      <link>https://nverma1.github.io/publication/naacl2021/</link>
+      <link>http://localhost:1313/publication/naacl2021/</link>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/naacl2021/</guid>
+      <guid>http://localhost:1313/publication/naacl2021/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -433,9 +433,9 @@ $$\begin{align*}
     
     <item>
       <title>Improving Low-Resource Cross-lingual Document Retrieval by Reranking with Deep Bilingual Representations</title>
-      <link>https://nverma1.github.io/publication/acl2019/</link>
+      <link>http://localhost:1313/publication/acl2019/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/publication/acl2019/</guid>
+      <guid>http://localhost:1313/publication/acl2019/</guid>
       <description>&lt;!-- &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
@@ -455,9 +455,9 @@ $$\begin{align*}
     
     <item>
       <title></title>
-      <link>https://nverma1.github.io/admin/config.yml</link>
+      <link>http://localhost:1313/admin/config.yml</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/admin/config.yml</guid>
+      <guid>http://localhost:1313/admin/config.yml</guid>
       <description></description>
     </item>
     

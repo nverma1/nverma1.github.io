@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home-Unuseds | Neha Verma</title>
-    <link>https://nverma1.github.io/home-unused/</link>
-      <atom:link href="https://nverma1.github.io/home-unused/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/home-unused/</link>
+      <atom:link href="http://localhost:1313/home-unused/index.xml" rel="self" type="application/rss+xml" />
     <description>Home-Unuseds</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
     <image>
-      <url>https://nverma1.github.io/media/icon_hu_b74de89b93264f55.png</url>
+      <url>http://localhost:1313/media/icon_hu_b74de89b93264f55.png</url>
       <title>Home-Unuseds</title>
-      <link>https://nverma1.github.io/home-unused/</link>
+      <link>http://localhost:1313/home-unused/</link>
     </image>
     
   </channel>
