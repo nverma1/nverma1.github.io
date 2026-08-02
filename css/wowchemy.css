@@ -9658,27 +9658,42 @@ footer {
   font-size: 0.83rem;
   padding: 1rem 0; }
 
-/* Bird gallery */
+/* Bird gallery — 4 columns that grow with available width */
+.article-container:has(.bird-gallery) {
+  max-width: 1400px;
+  width: 94%; }
+
 .bird-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
   margin-top: 2rem; }
-
+  @media (max-width: 900px) {
+    .bird-gallery {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) {
+    .bird-gallery {
+      grid-template-columns: 1fr; } }
 .bird-item {
   margin: 0; }
   .bird-item img {
     width: 100%;
-    height: 260px;
+    aspect-ratio: 1;
+    height: auto;
     object-fit: cover;
     border-radius: 6px;
-    display: block; }
+    display: block;
+    cursor: zoom-in; }
   .bird-item figcaption {
     margin-top: 0.4rem;
     font-size: 0.85rem;
     opacity: 0.65;
     text-align: center;
     font-style: italic; }
+
+/* Show the full uncropped photo when zoomed (medium-zoom) */
+.medium-zoom-image--opened {
+  object-fit: contain !important; }
 
 /* Publications list page */
 .pub-simple-list {
