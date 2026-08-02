@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts | Neha Verma</title>
-    <link>https://nverma1.github.io/post/</link>
-      <atom:link href="https://nverma1.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:1313/post/</link>
+      <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 04 Oct 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://nverma1.github.io/media/icon_hu_b74de89b93264f55.png</url>
+      <url>http://localhost:1313/media/icon_hu_b74de89b93264f55.png</url>
       <title>Posts</title>
-      <link>https://nverma1.github.io/post/</link>
+      <link>http://localhost:1313/post/</link>
     </image>
     
     <item>
       <title>Centered Kernel Alignment (CKA) in Detail</title>
-      <link>https://nverma1.github.io/post/cka_walkthrough/</link>
+      <link>http://localhost:1313/post/cka_walkthrough/</link>
       <pubDate>Fri, 04 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://nverma1.github.io/post/cka_walkthrough/</guid>
+      <guid>http://localhost:1313/post/cka_walkthrough/</guid>
       <description>&lt;h2 id=&#34;1-overview&#34;&gt;1. Overview&lt;/h2&gt;
 &lt;p&gt;CKA (Centered Kernel Alignment) is a state-of-the-art tool for measuring the similarity of neural network representations. It has practical uses such as comparing layers within a single model, comparing representations across two different architectures, or studying how representations evolve during training. After reading the original paper, I wanted more intuition about how the CKA formulae capture similarity, so I spent some time breaking it down. This post is a summary of my understanding of CKA and the derivations I worked out.&lt;/p&gt;
 &lt;p&gt;In summary, the key insight of CKA is the use of gram matrices that collapse the neuron dimension and instead compare inter-sample similarities, making the measure invariant to the width or bases of the layers being compared.&lt;/p&gt;
