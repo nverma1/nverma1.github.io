@@ -20,6 +20,10 @@
       <description>&lt;p&gt;Welcome to my birding page. I have recently really been enjoying photographing birds and have decided that this is the best place I can share some of my favorite pictures. I&amp;rsquo;ll try to keep this semi-updated as I take more photos. Enjoy!&lt;/p&gt;
 &lt;div class=&#34;bird-gallery&#34;&gt;
 &lt;figure class=&#34;bird-item&#34;&gt;
+  &lt;img src=&#34;caspian_tern.jpeg&#34; alt=&#34;Caspian tern in flight&#34; loading=&#34;lazy&#34; data-zoomable&gt;
+  &lt;figcaption&gt;Caspian tern&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure class=&#34;bird-item&#34;&gt;
   &lt;img src=&#34;american_goldfinch.jpeg&#34; alt=&#34;American goldfinch&#34; loading=&#34;lazy&#34; data-zoomable&gt;
   &lt;figcaption&gt;American goldfinch&lt;/figcaption&gt;
 &lt;/figure&gt;
