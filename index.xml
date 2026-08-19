@@ -5,12 +5,20 @@
     <link>http://localhost:1313/</link>
       <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <description>Neha Verma</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 17 Aug 2026 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:1313/media/icon_hu_b74de89b93264f55.png</url>
       <title>Neha Verma</title>
       <link>http://localhost:1313/</link>
     </image>
+    
+    <item>
+      <title>There is no Theoretical Curse of Multilinguality for Embedding Space Structure</title>
+      <link>http://localhost:1313/publication/com2026/</link>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/com2026/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>🐦 Birds</title>
