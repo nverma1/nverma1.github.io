@@ -9725,3 +9725,28 @@ footer {
 
 .pub-year {
   font-weight: 500; }
+
+/* "On the job market" box after the About section */
+.job-market-section.home-section {
+  padding-top: 0;
+  padding-bottom: 0.5rem; }
+
+.job-market-box {
+  border: 1px solid rgba(21, 101, 192, 0.35);
+  border-left: 4px solid #1565c0;
+  background: rgba(21, 101, 192, 0.06);
+  border-radius: 6px;
+  padding: 1rem 1.25rem; }
+  .job-market-box h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.35rem; }
+  .job-market-box p {
+    font-size: 0.9rem;
+    margin: 0; }
+
+.job-market-buttons {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; }
